@@ -18,7 +18,7 @@ const Checkout = ({ cart, clearCart }) => {
   });
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = 10;
+  const shipping = 100;
   const total = subtotal + shipping;
 
   const handleInputChange = (e) => {
