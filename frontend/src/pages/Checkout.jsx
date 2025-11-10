@@ -150,7 +150,7 @@ const Checkout = ({ cart, clearCart }) => {
                     required
                     rows="3"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-                    placeholder="123 Main St, City, State, ZIP"
+                    placeholder="123, MG Road, Bangalore, Karnataka - 560001"
                     data-testid="customer-address"
                   />
                 </div>
