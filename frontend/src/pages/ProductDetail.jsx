@@ -110,7 +110,7 @@ const ProductDetail = ({ addToCart }) => {
                 {/* Price */}
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-gray-800" data-testid="product-detail-price">
-                    ${product.price.toFixed(2)}
+                    ₹{product.price.toLocaleString('en-IN')}
                   </span>
                 </div>
 
