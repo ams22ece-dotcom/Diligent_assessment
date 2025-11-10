@@ -114,7 +114,7 @@ const Checkout = ({ cart, clearCart }) => {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-                    placeholder="john@example.com"
+                    placeholder="rahul@example.com"
                     data-testid="customer-email"
                   />
                 </div>
