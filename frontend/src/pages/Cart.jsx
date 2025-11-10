@@ -101,16 +101,16 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
-                  <span data-testid="subtotal">${subtotal.toFixed(2)}</span>
+                  <span data-testid="subtotal">₹{subtotal.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Shipping</span>
-                  <span data-testid="shipping">${shipping.toFixed(2)}</span>
+                  <span data-testid="shipping">₹{shipping.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between text-xl font-bold text-gray-800">
                     <span>Total</span>
-                    <span data-testid="total">${total.toFixed(2)}</span>
+                    <span data-testid="total">₹{total.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               </div>
