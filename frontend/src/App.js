@@ -6,6 +6,7 @@ import ProductDetail from "@/pages/ProductDetail";
 import Cart from "@/pages/Cart";
 import Checkout from "@/pages/Checkout";
 import OrderConfirmation from "@/pages/OrderConfirmation";
+import Login from "@/pages/Login";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -69,6 +70,7 @@ function App() {
         <Navbar cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)} />
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/product/:id" element={<ProductDetail addToCart={addToCart} />} />
           <Route 
             path="/cart" 

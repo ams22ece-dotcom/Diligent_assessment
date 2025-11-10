@@ -5,10 +5,11 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+import bcrypt
 
 
 ROOT_DIR = Path(__file__).parent
@@ -79,13 +80,71 @@ class OrderCreate(BaseModel):
     items: List[OrderItem]
     total: float
 
+# ============= AUTH MODELS =============
+
+class User(BaseModel):
+    """User model"""
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: EmailStr
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class UserSignup(BaseModel):
+    """Model for user signup"""
+    name: str
+    email: EmailStr
+    password: str
+
+class UserLogin(BaseModel):
+    """Model for user login"""
+    email: EmailStr
+    password: str
+
 
 # ============= API ROUTES =============
 
 @api_router.get("/")
 async def root():
     """Root endpoint"""
-    return {"message": "E-commerce API"}
+    return {"message": "DiligentStore API"}
+
+# Auth Routes
+@api_router.post("/auth/signup")
+async def signup(user_data: UserSignup):
+    """Create a new user account"""
+    # Check if user already exists
+    existing_user = await db.users.find_one({"email": user_data.email}, {"_id": 0})
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Hash password
+    hashed_password = bcrypt.hashpw(user_data.password.encode('utf-8'), bcrypt.gensalt())
+    
+    # Create user
+    user_obj = User(name=user_data.name, email=user_data.email)
+    doc = user_obj.model_dump()
+    doc['password'] = hashed_password.decode('utf-8')
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.users.insert_one(doc)
+    
+    return {"user": {"id": user_obj.id, "name": user_obj.name, "email": user_obj.email}}
+
+@api_router.post("/auth/login")
+async def login(credentials: UserLogin):
+    """Login user"""
+    # Find user
+    user = await db.users.find_one({"email": credentials.email}, {"_id": 0})
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    # Verify password
+    if not bcrypt.checkpw(credentials.password.encode('utf-8'), user['password'].encode('utf-8')):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    return {"user": {"id": user['id'], "name": user['name'], "email": user['email']}}
 
 # Product Routes
 @api_router.get("/products", response_model=List[Product])
