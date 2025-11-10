@@ -132,7 +132,7 @@ const Checkout = ({ cart, clearCart }) => {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-                    placeholder="+1 234 567 8900"
+                    placeholder="+91 98765 43210"
                     data-testid="customer-phone"
                   />
                 </div>
