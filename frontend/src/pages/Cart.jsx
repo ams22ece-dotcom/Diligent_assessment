@@ -56,7 +56,7 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
                   </Link>
                   <p className="text-gray-600 text-sm mt-1">{item.category}</p>
                   <p className="text-lg font-bold text-gray-800 mt-2" data-testid={`cart-item-price-${item.id}`}>
-                    ${item.price.toFixed(2)}
+                    ₹{item.price.toLocaleString('en-IN')}
                   </p>
                 </div>
 
