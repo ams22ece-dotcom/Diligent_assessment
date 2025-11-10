@@ -145,7 +145,7 @@ const Home = ({ addToCart }) => {
                 </p>
                 <div className="flex items-center justify-between pt-2">
                   <span className="text-2xl font-bold text-gray-800" data-testid={`product-price-${product.id}`}>
-                    ${product.price.toFixed(2)}
+                    ₹{product.price.toLocaleString('en-IN')}
                   </span>
                   <button
                     onClick={() => handleAddToCart(product)}
