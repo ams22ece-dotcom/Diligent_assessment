@@ -102,7 +102,7 @@ const OrderConfirmation = () => {
                     <div className="text-sm text-gray-600">Quantity: {item.quantity}</div>
                   </div>
                   <div className="font-bold text-gray-800">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                   </div>
                 </div>
               ))}
