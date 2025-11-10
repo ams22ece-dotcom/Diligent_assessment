@@ -189,7 +189,7 @@ const Checkout = ({ cart, clearCart }) => {
                     <span className="text-gray-600">
                       {item.name} x {item.quantity}
                     </span>
-                    <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-medium">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
                   </div>
                 ))}
               </div>
