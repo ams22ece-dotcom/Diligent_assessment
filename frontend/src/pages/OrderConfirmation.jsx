@@ -73,16 +73,8 @@ const OrderConfirmation = () => {
             <h3 className="font-bold text-gray-800 mb-3">Customer Information</h3>
             <div className="space-y-2 text-gray-600">
               <div>
-                <span className="font-medium">Name:</span> <span data-testid="order-customer-name">{order.customer_name}</span>
-              </div>
-              <div>
-                <span className="font-medium">Email:</span> <span data-testid="order-customer-email">{order.customer_email}</span>
-              </div>
-              <div>
-                <span className="font-medium">Phone:</span> <span data-testid="order-customer-phone">{order.customer_phone}</span>
-              </div>
-              <div>
-                <span className="font-medium">Address:</span> <span data-testid="order-customer-address">{order.customer_address}</span>
+                <span className="font-medium">Name:</span> <span data-testid="summary-item-name">{item.name} x {item.quantity}</span>
+                <span className="font-medium">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
               </div>
             </div>
           </div>
