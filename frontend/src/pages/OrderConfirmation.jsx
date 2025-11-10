@@ -113,7 +113,7 @@ const OrderConfirmation = () => {
           <div className="border-t pt-4">
             <div className="flex justify-between text-2xl font-bold text-gray-800">
               <span>Total</span>
-              <span data-testid="order-total">${order.total.toFixed(2)}</span>
+              <span data-testid="order-total">₹{order.total.toLocaleString('en-IN')}</span>
             </div>
           </div>
 
