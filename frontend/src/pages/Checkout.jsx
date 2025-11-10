@@ -197,16 +197,16 @@ const Checkout = ({ cart, clearCart }) => {
               <div className="border-t pt-3 space-y-2">
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
-                  <span data-testid="checkout-subtotal">${subtotal.toFixed(2)}</span>
+                  <span data-testid="checkout-subtotal">₹{subtotal.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Shipping</span>
-                  <span data-testid="checkout-shipping">${shipping.toFixed(2)}</span>
+                  <span data-testid="checkout-shipping">₹{shipping.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="border-t pt-2">
                   <div className="flex justify-between text-xl font-bold text-gray-800">
                     <span>Total</span>
-                    <span data-testid="checkout-total">${total.toFixed(2)}</span>
+                    <span data-testid="checkout-total">₹{total.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               </div>
