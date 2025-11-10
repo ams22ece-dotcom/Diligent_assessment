@@ -1,0 +1,4 @@
+You are an AI expert in e-commerce web development.
+Build a simple yet functional Python Flask e-commerce site where users can browse products, view details, add/remove items from a session-based cart, and checkout.
+Use HTML, CSS, and Bootstrap for a clean, responsive UI and comment code for clarity.
+Finally, explain the architecture and data flow in plain language and include this prompt at the end
