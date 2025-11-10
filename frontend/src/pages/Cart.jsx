@@ -3,7 +3,7 @@ import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
 
 const Cart = ({ cart, updateQuantity, removeFromCart }) => {
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = subtotal > 0 ? 10 : 0;
+  const shipping = subtotal > 0 ? 100 : 0;
   const total = subtotal + shipping;
 
   if (cart.length === 0) {
